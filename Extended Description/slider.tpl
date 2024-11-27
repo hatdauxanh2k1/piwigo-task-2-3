@@ -49,7 +49,6 @@
 {footer_script require='jquery.nivo.slider'}
 (function($){ldelim}
   var $slider = $("#slider{$SLIDER.id} .nivoSlider");
-
   $slider.nivoSlider({ldelim}
     pauseTime: {$SLIDER.speed}*1000,
     animSpeed: {$SLIDER.speed}*1000/6,
@@ -62,7 +61,7 @@
         return false;
       }
       {if $SLIDER.elastic}
-      $slider.css({ldelim} height: '100%', width: '100%' });
+      $slider.css({ldelim} height: '100%' ,width: '100%' });
       {/if}
     }
   });
@@ -72,8 +71,8 @@
     width: '{$slider_full_width}'
   });
   $slider.css({ldelim}
-    height: {if $SLIDER.elastic}{$slider_init_height}{else}{$slider_full_height}{/if},
-    width: {$slider_init_width}
+    height: 'auto',
+    width: 'auto'
   });
 }(jQuery));
 {/footer_script}
