@@ -62,7 +62,7 @@
         return false;
       }
       {if $SLIDER.elastic}
-      $slider.css({ldelim} height: '100%', width: '50%' });
+      $slider.css({ldelim} height: '100%', width: '100%' });
       {/if}
     }
   });
