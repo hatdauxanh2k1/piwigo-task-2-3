@@ -16,7 +16,7 @@
 {assign var=slider_full_height value=$SLIDER.img_size.h}
 {/if}
 {assign var=slider_full_width value=0}
-
+<div class="slider-container">
 <div id="slider{$SLIDER.id}" class="slider-wrapper theme-default">
   <div class="nivoSlider">
   {foreach from=$SLIDER.elements item=thumbnail name=slider}{strip}
@@ -30,9 +30,9 @@
     <img {if $derivative->is_cached()}src="{$derivative->get_url()}"{else}src="" data-src="{$derivative->get_url()}"{/if} alt="{$thumbnail.TN_ALT}" {$derivative->get_size_htm()} {if $SLIDER.title}title="<a href='{$thumbnail.URL}'>{$thumbnail.NAME|replace:'"':"'"}</a>"{/if} {if $SLIDER.control_thumbs}data-thumb="{$derivative_thumb}"{/if}>
 
     {assign var=derivative_size value=$derivative->get_size()}
-    {$slider_full_width = '100'}
+    {$slider_full_width = '100%'}
     {if $SLIDER.elastic}    
-      {$slider_full_height = 'auto'}
+      {$slider_full_height = '100%'}
     {else}
       {$slider_full_height = min($slider_full_height, $derivative_size[1])}
     {/if}
@@ -43,6 +43,7 @@
   {/strip}
   {/foreach}
   </div>
+</div>
 </div>
 
 {footer_script require='jquery.nivo.slider'}
@@ -61,14 +62,14 @@
         return false;
       }
       {if $SLIDER.elastic}
-      $slider.css({ldelim} height: 'auto' });
+      $slider.css({ldelim} height: '100%', width: '50%' });
       {/if}
     }
   });
 
   $slider.parent().css({ldelim}
-    height: {$slider_full_height},
-    width: {$slider_full_width}
+    height: '{$slider_full_height}',
+    width: '{$slider_full_width}'
   });
   $slider.css({ldelim}
     height: {if $SLIDER.elastic}{$slider_init_height}{else}{$slider_full_height}{/if},
