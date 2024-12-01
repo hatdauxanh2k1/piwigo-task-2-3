@@ -30,9 +30,9 @@
     <img {if $derivative->is_cached()}src="{$derivative->get_url()}"{else}src="" data-src="{$derivative->get_url()}"{/if} alt="{$thumbnail.TN_ALT}" {$derivative->get_size_htm()} {if $SLIDER.title}title="<a href='{$thumbnail.URL}'>{$thumbnail.NAME|replace:'"':"'"}</a>"{/if} {if $SLIDER.control_thumbs}data-thumb="{$derivative_thumb}"{/if}>
 
     {assign var=derivative_size value=$derivative->get_size()}
-    {$slider_full_width = '100%'}
+    {$slider_full_width = '80%'}
     {if $SLIDER.elastic}    
-      {$slider_full_height = '100%'}
+      {$slider_full_height = 'fit-content'}
     {else}
       {$slider_full_height = min($slider_full_height, $derivative_size[1])}
     {/if}
@@ -61,7 +61,7 @@
         return false;
       }
       {if $SLIDER.elastic}
-      $slider.css({ldelim} height: '100%' ,width: '100%' });
+      $slider.css({ldelim} height: 'fit-content' , width: '100%' });
       {/if}
     }
   });
